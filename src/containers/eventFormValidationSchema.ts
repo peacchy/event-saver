@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const FIELD_LIMIT = 15;
+const FIELD_LIMIT = 50;
 
 const textInputSchema = (fieldLimit: number) =>
   Yup.string().trim().max(fieldLimit, `Maximum length is ${fieldLimit}`);
@@ -14,7 +14,7 @@ export const eventFormValidationSchema = Yup.object({
     .required("Required"),
   lastName: textInputSchema(FIELD_LIMIT)
     .matches(/^[a-zA-Z-]+$/, {
-      message: "Last name must contain only letters hypens",
+      message: "Last name must contain only letters and hypens",
       excludeEmptyString: true,
     })
     .required("Required"),
@@ -24,5 +24,9 @@ export const eventFormValidationSchema = Yup.object({
       excludeEmptyString: true,
     })
     .required("Required"),
-  date: Yup.mixed().required("Required"),
+  date: Yup.date()
+    .min(new Date(), "Date must be today or older")
+    .required("Required")
+    .nullable()
+    .typeError("Invalid date"),
 });

@@ -9,7 +9,7 @@ const EventSaver = styled("div")(({ theme }) => ({
   margin: theme.spacing(4),
 }));
 
-interface EventFormValues {
+export interface EventFormValues {
   date: Date | null;
   email: string;
   firstName: string;
@@ -60,7 +60,6 @@ export const EventForm = () => {
             onChange={handleChange}
           />
           <FormDateField
-            // error={touched.date && Boolean(errors.date)}
             error={touched.date && Boolean(errors.date)}
             helperText={touched.date ? errors.date : undefined}
             label="Event Date"

@@ -38,14 +38,13 @@ export const FormDateField: VFC<FormDateFieldProps> = ({
         label={label}
         value={value}
         onChange={onChange}
-        minDate={new Date()}
+        disablePast
         renderInput={(params) => (
           <TextField
+            {...params}
             size="small"
             error={error}
             helperText={helperText}
-            disabled={true} //not working
-            {...params}
           />
         )}
       />
