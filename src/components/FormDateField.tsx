@@ -44,7 +44,7 @@ export const FormDateField: VFC<FormDateFieldProps> = ({
             size="small"
             error={error}
             helperText={helperText}
-            disabled={true}
+            disabled={true} //not working
             {...params}
           />
         )}

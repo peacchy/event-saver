@@ -26,23 +26,12 @@ export const EventForm = () => {
         lastName: "",
       },
       validationSchema: eventFormValidationSchema,
-      onSubmit: (values) => console.log(values),
+      onSubmit: (values) => alert(JSON.stringify(values)),
     });
   return (
     <EventSaver>
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
-          {/* <TextField
-      fullWidth
-      id="email"
-      name="email"
-      label="Email"
-      value={values.email}
-      onChange={handleChange}
-      error={touched.email && Boolean(errors.email)}
-      helperText={touched.email && errors.email}
-    /> */}
-
           <FormTextField
             error={touched.firstName && Boolean(errors.firstName)}
             helperText={touched.firstName ? errors.firstName : undefined}
@@ -72,7 +61,7 @@ export const EventForm = () => {
           />
           <FormDateField
             // error={touched.date && Boolean(errors.date)}
-            error={true}
+            error={touched.date && Boolean(errors.date)}
             helperText={touched.date ? errors.date : undefined}
             label="Event Date"
             value={values.date}
